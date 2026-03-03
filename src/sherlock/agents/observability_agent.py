@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 def get_cloudwatch_mcp_client():
     """Get CloudWatch MCP client for use in orchestrator."""
     aws_region = os.getenv("AWS_REGION", "us-east-1")
+    observability_mcp_image = os.getenv("OBSERVABILITY_MCP_IMAGE", "awslabs/cloudwatch-mcp-server:latest")
     
     return MCPClient(
         lambda: stdio_client(
@@ -24,7 +25,7 @@ def get_cloudwatch_mcp_client():
                     "--env", f"AWS_SESSION_TOKEN={os.getenv('AWS_SESSION_TOKEN', '')}",
                     "--env", "FASTMCP_LOG_LEVEL=ERROR",
                     "--volume", f"{os.path.expanduser('~')}/.aws:/root/.aws:ro",
-                    "awslabs/cloudwatch-mcp-server:latest"
+                    observability_mcp_image
                 ],
                 env={},
                 timeout=30

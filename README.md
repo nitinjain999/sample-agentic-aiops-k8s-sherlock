@@ -37,6 +37,14 @@ tools and data sources, eliminating custom integrations and enabling rapid syste
 AWS, and monitoring tools.
 - **Amazon Bedrock**: For Large Language Model capabilities. **Amazon Bedrock** provides the foundational large language model capabilities that power our agentic system, offering enterprise-grade AI models through a fully managed service with built-in security, compliance, and cost controls - enabling platform engineers to focus on building intelligent operational workflows rather than managing AI infrastructure, while ensuring their agentic systems have access to state-of-the-art reasoning capabilities for complex troubleshooting and analysis.
 
+### If you already use EKS with Amazon Managed Prometheus (AMP)
+- Keep using CloudWatch logs/alarms for log and alarm investigations.
+- Route observability metrics to AMP and run Sherlock with an AMP-compatible MCP image by setting:
+  ```bash
+  export OBSERVABILITY_MCP_IMAGE=awslabs/prometheus-mcp-server:latest
+  ```
+- If `OBSERVABILITY_MCP_IMAGE` is not set, Sherlock continues to use `awslabs/cloudwatch-mcp-server:latest` by default.
+
 
 ## Understanding the Sherlock Agents
 

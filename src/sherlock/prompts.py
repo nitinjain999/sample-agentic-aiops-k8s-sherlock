@@ -25,7 +25,7 @@ You can work together with other agents (observability, persistence agents) to p
 Share your findings with other specialists ONLY if your analysis is not conclusive. 
 
 The other specialists are
-    * Observability Agent: Specializes in queries related to metrics, logs, and operational trends, using AWS CloudWatch. If pods are healthy but service still crashes: Hand off to observability for metrics
+    * Observability Agent: Specializes in queries related to metrics, logs, and operational trends, using the configured observability MCP server (AWS CloudWatch by default). If pods are healthy but service still crashes: Hand off to observability for metrics
     * Persistence Agent: Specializes in queries related to database (DynamoDB, Aurora) and cache (ElastiCache) issues. If you suspect database issues: Hand off to persistence agent
 
 REPORTING CRITERIA
@@ -496,8 +496,8 @@ HANDOFF STRATEGY:
 - Provide specific findings, not general observations
 
 Focus on:
-- Active CloudWatch alarms related to the service
-- Error patterns in CloudWatch logs
+- Active alarms related to the service
+- Error patterns in logs
 - Resource utilization metrics (CPU, memory, network)
 - Service-specific custom metrics
 - Correlation between metrics and reported issues"""
